@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Http\Middleware\ApiAuthMiddleware;
+
 use Illuminate\Support\Facades\Route;
 
 
@@ -47,10 +49,10 @@ Route::get('/testorm',  'App\Http\Controllers\AnimalesController@testOrm');
 
     /* Metodos HTTP comunes
         
-        * GET
-        * POST
-        * PUT
-        * DELETE
+        * GET : Conseguir datos o recursos
+        * POST : Guardar datos, recursos o hacer logica desde un formulario
+        * PUT : Actualizar datos o recursos
+        * DELETE : Eliminar datos o recursos
 
     */
 
@@ -64,3 +66,6 @@ Route::get('/testorm',  'App\Http\Controllers\AnimalesController@testOrm');
 
     Route::post('/api/register',  'App\Http\Controllers\UserController@register'); 
     Route::post('/api/login',  'App\Http\Controllers\UserController@login'); 
+    Route::put('/api/user/update',  'App\Http\Controllers\UserController@update');
+    Route::post('/api/user/upload', 'App\Http\Controllers\UserController@upload')->middleware(\App\Http\Middleware\ApiAuthMiddleware::class); 
+    Route::post('/api/user/avatar/{filename}', 'App\Http\Controllers\UserController@getImage'); 
