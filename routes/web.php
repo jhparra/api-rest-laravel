@@ -58,9 +58,9 @@ Route::get('/testorm',  'App\Http\Controllers\AnimalesController@testOrm');
 
     // Rutas de pruebas
 
-    Route::get('/usuarios/pruebas',  'App\Http\Controllers\UserController@pruebas');  
-    Route::get('/categoria/pruebas',  'App\Http\Controllers\CategoryController@pruebas');  
-    Route::get('/entrada/pruebas',  'App\Http\Controllers\PostController@pruebas');  
+    //Route::get('/usuarios/pruebas',  'App\Http\Controllers\UserController@pruebas');  
+    //Route::get('/categoria/pruebas',  'App\Http\Controllers\CategoryController@pruebas');  
+    //Route::get('/entrada/pruebas',  'App\Http\Controllers\PostController@pruebas');  
 
     // Rutas del contolador de usuarios
 
@@ -69,3 +69,16 @@ Route::get('/testorm',  'App\Http\Controllers\AnimalesController@testOrm');
     Route::put('/api/user/update',  'App\Http\Controllers\UserController@update');
     Route::post('/api/user/upload', 'App\Http\Controllers\UserController@upload')->middleware(\App\Http\Middleware\ApiAuthMiddleware::class); 
     Route::post('/api/user/avatar/{filename}', 'App\Http\Controllers\UserController@getImage'); 
+    Route::get('/api/user/detail/{id}', 'App\Http\Controllers\UserController@detail'); 
+
+    // Cotrolador de Categoria
+
+    Route::resource('/api/category', 'App\Http\Controllers\CategoryController'); 
+
+    // Cotrolador de Entradas
+
+    Route::resource('/api/post', 'App\Http\Controllers\PostController'); 
+    Route::post('/api/post/upload', 'App\Http\Controllers\PostController@upload'); 
+    Route::get('/api/post/image/{filename}', 'App\Http\Controllers\PostController@getImage'); 
+    Route::get('/api/post/category/{id}', 'App\Http\Controllers\PostController@getPostsByCategory'); 
+    Route::get('/api/post/user/{id}', 'App\Http\Controllers\PostController@getPostsbyUser'); 

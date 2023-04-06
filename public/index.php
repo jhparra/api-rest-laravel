@@ -1,5 +1,17 @@
 <?php
 
+// Las sigueites lieas se copiaro de este sitio
+// https://victorroblesweb.es/2017/04/23/cabeceras-http-php-permitir-acceso-cors/
+header('Access-Control-Allow-Origin: *');
+// Agregar al fial Authorization
+header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method,Authorization");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+header("Allow: GET, POST, OPTIONS, PUT, DELETE");
+$method = $_SERVER['REQUEST_METHOD'];
+if($method == "OPTIONS") {
+    die();
+}   
+
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 

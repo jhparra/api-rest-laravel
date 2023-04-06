@@ -12,9 +12,9 @@ class Post extends Model
     protected $table = 'posts';
 
     protected $fillable = [
-        'id ',
         'title',
-        'content'
+        'content',
+        'category_id'
     ];
 
     // Relacion de uno a muchos inversa (mucho a uno)
